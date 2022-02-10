@@ -2,6 +2,8 @@
 {
     using BasicWebServer.Server;
     using BasicWebServer.Server.Routing;
+    using SharedTrip.Contracts;
+    using SharedTrip.Services;
     using System.Threading.Tasks;
 
     public class Startup
@@ -12,8 +14,8 @@
                .MapControllers()
                .MapStaticFiles());
 
-            //server.ServiceCollection
-            //    .Add<UserService>();
+           server.ServiceCollection
+             .Add<IUserService, UserService>();
 
             await server.Start();
         }

@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SharedTrip.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicWebServer.Server.Controllers
+namespace SharedTrip.Services
 {
-    internal class AccountController
+    public class UserService:IUserService
     {
+
     }
 }
