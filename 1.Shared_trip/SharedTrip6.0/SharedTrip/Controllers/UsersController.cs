@@ -76,5 +76,12 @@ namespace BasicWebServer.Server.Controllers
                 return View(new List<ErrorViewModel> { new ErrorViewModel("Login incorrect") }, "Error");
             }
         }
+
+        [Authorize]
+        public Response Logout() 
+        {
+            SignOut();
+            return Redirect("/");
+        }
     }
 }

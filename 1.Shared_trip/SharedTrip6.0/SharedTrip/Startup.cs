@@ -19,7 +19,8 @@
             server.ServiceCollection
               .Add<IUserService, UserService>()
               .Add<IRepository, Repository>()
-              .Add<ApplicationDbContext>();
+              .Add<ApplicationDbContext>()
+              .Add<ITripService,TripService>();
 
             await server.Start();
         }

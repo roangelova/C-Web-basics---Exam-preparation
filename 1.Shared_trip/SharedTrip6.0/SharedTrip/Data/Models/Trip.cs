@@ -36,6 +36,7 @@ namespace SharedTrip.Data.Models
 
         public Trip()
         {
+            Id = Guid.NewGuid().ToString();
             UserTrips = new List<UserTrip>();
         }
     }
