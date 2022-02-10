@@ -24,7 +24,7 @@ namespace SharedTrip.Services
         {
             Trip trip = new Trip()
             {
-                DepartureTime = model.ConvertedDate,
+
                 Description = model.Description,
                 EndPoint = model.EndPoint,
                 StartPoint = model.StartPoint,
@@ -33,8 +33,73 @@ namespace SharedTrip.Services
 
             };
 
+            DateTime date;
+
+            DateTime.TryParseExact(
+                model.DepartureTime,
+                "dd.MM.yyyy HH:mm",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date);
+
+            trip.DepartureTime = date;
+
             repo.Add(trip);
-            repo.SaveChanges(); 
+            repo.SaveChanges();
+
+        }
+
+        public void AddUserToTrip(string tripId, string id)
+        {
+            var user = repo.All<User>()
+                .FirstOrDefault(u => u.Id == id);
+
+            var trip = repo.All<Trip>()
+                .FirstOrDefault(t => t.Id == tripId);
+
+            if (user == null || trip == null)
+            {
+                throw new ArgumentException("User or trip not found");
+            }
+
+            user.UserTrips.Add(new UserTrip()
+            {
+                TripId = tripId,
+                Trip    = trip,
+                User = user, 
+                UserID = id
+            });
+
+            repo.SaveChanges();
+        }
+
+        public IEnumerable<TripListViewModel> GetAllTrips()
+        {
+            return repo.All<Trip>()
+                .Select(t => new TripListViewModel() 
+                { DepartureTime = t.DepartureTime.ToString("dd.MM.yyyy HH:mm"),
+                EndPoint = t.EndPoint,
+                Id = t.Id,
+                Seats=t.Seats,
+                StartPoint=t.StartPoint
+                });
+        }
+
+        public TripDetailsViewModel GetTripDetails(string tripId)
+        {
+            return repo.All<Trip>().Where(t => t.Id == tripId)
+                 .Select(t => new TripDetailsViewModel() 
+                 { 
+                 DepartureTime = t.DepartureTime.ToString("dd.MM.yyyy HH:mm"),
+                 Description = t.Description,
+                 EndPoint = t.EndPoint,
+                 Id = t.Id, 
+                 ImagePath=t.ImagePath,
+                 Seats = t.Seats,
+                 StartPoint = t.StartPoint
+                 }
+                 ).FirstOrDefault();
+
 
         }
 
@@ -68,20 +133,6 @@ namespace SharedTrip.Services
                 errors.Add(new ErrorViewModel("Seats must be between 2 and 6"));
             }
 
-            if (!DateTime.TryParseExact(
-                model.DepartureTime,
-                "dd.MM.yyyy HH:mm",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out date))
-            {
-                isValid = false;
-                errors.Add(new ErrorViewModel("Seats must be between 2 and 6"));
-            }
-            else
-            {
-                model.ConvertedDate = date;
-            }
 
 
             return (isValid, errors);

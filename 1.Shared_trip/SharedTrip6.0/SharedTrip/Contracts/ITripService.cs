@@ -11,5 +11,8 @@ namespace SharedTrip.Contracts
     {
         (bool isValid, IEnumerable<ErrorViewModel> errors) ValidateModel(TripViewModel model);
         void AddTrip(TripViewModel model);
+        IEnumerable<TripListViewModel> GetAllTrips();
+        TripDetailsViewModel GetTripDetails(string tripId);
+        void AddUserToTrip(string tripId, string id);
     }
 }

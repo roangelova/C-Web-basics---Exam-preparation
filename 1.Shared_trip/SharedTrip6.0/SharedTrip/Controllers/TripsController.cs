@@ -10,10 +10,10 @@ namespace BasicWebServer.Server.Controllers
     public class TripsController : Controller
     {
         private readonly ITripService tripService;
-        public TripsController(Request request,ITripService _tripService)
+        public TripsController(Request request, ITripService _tripService)
             : base(request)
         {
-             tripService = _tripService;    
+            tripService = _tripService;
         }
 
         [Authorize]
@@ -39,7 +39,42 @@ namespace BasicWebServer.Server.Controllers
                 return View(new List<ErrorViewModel> { new ErrorViewModel("Unexpected error") }, "Error");
             }
 
-            return Redirect("/");
+            return Redirect("/Trips/All");
+        }
+
+        [Authorize]
+        public Response All()
+        {
+            IEnumerable<TripListViewModel> trips = tripService.GetAllTrips();
+
+            return View(trips);
+        }
+
+        [Authorize]
+        public Response Details(string tripId)
+        {
+            TripDetailsViewModel tripDetailsViewModel = tripService.GetTripDetails(tripId);
+
+            return View(tripDetailsViewModel);
+        }
+
+        [Authorize]
+        public Response AddUserToTrip(string tripId) 
+        {
+            try
+            {
+                tripService.AddUserToTrip(tripId, User.Id);
+            }
+            catch (ArgumentException aex)
+            {
+                return View(new List<ErrorViewModel> { new ErrorViewModel(aex.Message) }, "Error");
+            }
+            catch (Exception) 
+            {
+                return View(new List<ErrorViewModel> { new ErrorViewModel("Unexpected error") }, "Error");
+            }
+
+            return Redirect("/Trips/All");
         }
     }
 }

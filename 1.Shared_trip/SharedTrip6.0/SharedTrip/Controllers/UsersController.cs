@@ -23,10 +23,25 @@ namespace BasicWebServer.Server.Controllers
         }
 
         public Response Login()
-        => View();
+        {
+            if (User.IsAuthenticated)
+            {
+                return Redirect("/Trips/All");
+            }
+
+            return View();
+        }
+        
 
         public Response Register()
-        => View();
+        {
+            if (User.IsAuthenticated)
+            {
+                return Redirect("/Trips/All");
+            }
+
+            return View();
+        }
 
         [HttpPost]
         public Response Register(RegisterViewModel model)
@@ -69,7 +84,7 @@ namespace BasicWebServer.Server.Controllers
                 cookies.Add(Session.SessionCookieName,
                     Request.Session.Id);
 
-                return Redirect("/");
+                return Redirect("/Trips/All");
             }
             else
             {
