@@ -1,0 +1,12 @@
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\bin\Debug\net6.0\BasicWebServer.Server.deps.json
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\bin\Debug\net6.0\BasicWebServer.Server.dll
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\bin\Debug\net6.0\ref\BasicWebServer.Server.dll
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\bin\Debug\net6.0\BasicWebServer.Server.pdb
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.csproj.AssemblyReference.cache
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.AssemblyInfoInputs.cache
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.AssemblyInfo.cs
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.csproj.CoreCompileInputs.cache
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.dll
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\ref\BasicWebServer.Server.dll
+C:\Users\35989\Documents\Soft Uni\Exam preparation - C# Web\C-Web-basics---Exam-preparation\1.Shared_trip\SharedTrip6.0\BasicWebServer.Server\obj\Debug\net6.0\BasicWebServer.Server.pdb
