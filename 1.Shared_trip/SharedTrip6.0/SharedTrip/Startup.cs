@@ -3,6 +3,8 @@
     using BasicWebServer.Server;
     using BasicWebServer.Server.Routing;
     using SharedTrip.Contracts;
+    using SharedTrip.Data;
+    using SharedTrip.Data.Common;
     using SharedTrip.Services;
     using System.Threading.Tasks;
 
@@ -14,8 +16,10 @@
                .MapControllers()
                .MapStaticFiles());
 
-           server.ServiceCollection
-             .Add<IUserService, UserService>();
+            server.ServiceCollection
+              .Add<IUserService, UserService>()
+              .Add<IRepository, Repository>()
+              .Add<ApplicationDbContext>();
 
             await server.Start();
         }
