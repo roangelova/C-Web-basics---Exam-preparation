@@ -5,14 +5,21 @@ namespace SMS.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(Request request) 
+        public HomeController(Request request)
             : base(request)
         {
         }
 
         public Response Index()
         {
-            return this.View();
+            var model = new
+            {
+                IsAuthenticated = User.IsAuthenticated
+            };
+            return this.View(model);
         }
+
+
+
     }
 }
