@@ -38,8 +38,17 @@ SharedTrip.Services
 
             user.Password = HashPassword(model.Password);
 
-            repo.Add(user);
-            repo.SaveChanges();
+            try
+            {
+                repo.Add(user);
+                repo.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         private User GetUserByUsername(string username)
@@ -56,41 +65,41 @@ SharedTrip.Services
         }
 
 
-       
+
         public (bool isValid, IEnumerable<ErrorViewModel> errors)
                 ValidateModel(RegisterViewModel model)
+        {
+            bool isValid = true;
+            List<ErrorViewModel> errors = new List<ErrorViewModel>();
+
+            if (model.UserName == null || model.UserName.Length < 5
+                || model.UserName.Length > 20)
             {
-                bool isValid = true;
-                List<ErrorViewModel> errors = new List<ErrorViewModel>();
-
-                if (model.UserName == null || model.UserName.Length < 5
-                    || model.UserName.Length > 20)
-                {
-                    isValid = false;
-                    errors.Add(new ErrorViewModel("Username is required and must be between 5 and 20 characters."));
-                }
-
-                if (string.IsNullOrWhiteSpace(model.Email))
-                {
-                    isValid = false;
-                    errors.Add(new ErrorViewModel("Email is required."));
-                }
-
-                if (model.Password == null || model.Password.Length < 6
-                    || model.Password.Length > 20)
-                {
-                    isValid = false;
-                    errors.Add(new ErrorViewModel("Password is required and must be between 6 and 20 characters."));
-                }
-
-                if (model.Password != model.ConfirmPassword)
-                {
-                    isValid = false;
-                    errors.Add(new ErrorViewModel("Password and ConfirmPassword are not th4e same"));
-                }
-
-                return (isValid, errors);
+                isValid = false;
+                errors.Add(new ErrorViewModel("Username is required and must be between 5 and 20 characters."));
             }
+
+            if (string.IsNullOrWhiteSpace(model.Email))
+            {
+                isValid = false;
+                errors.Add(new ErrorViewModel("Email is required."));
+            }
+
+            if (model.Password == null || model.Password.Length < 6
+                || model.Password.Length > 20)
+            {
+                isValid = false;
+                errors.Add(new ErrorViewModel("Password is required and must be between 6 and 20 characters."));
+            }
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                isValid = false;
+                errors.Add(new ErrorViewModel("Password and ConfirmPassword are not th4e same"));
+            }
+
+            return (isValid, errors);
+        }
 
         public (string userID, bool isCorrect) IsLoginCorrect(LoginViewModel model)
         {
@@ -111,4 +120,4 @@ SharedTrip.Services
             return (userId, isCorrect);
         }
     }
-    }
+}
