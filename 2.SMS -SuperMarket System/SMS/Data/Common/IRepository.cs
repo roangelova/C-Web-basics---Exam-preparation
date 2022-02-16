@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SharedTrip.Data.Common
+namespace SMS.Data.Common
 {
     public  interface IRepository
     {

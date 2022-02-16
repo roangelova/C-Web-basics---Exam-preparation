@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace SharedTrip.Data.Common
+namespace SMS.Data.Common
 {
     public class Repository : IRepository
     {
         private readonly DbContext dbContext;
 
-        public Repository(ApplicationDbContext context)
+        public Repository(SMSDbContext context)
         {
             dbContext = context;
         }
