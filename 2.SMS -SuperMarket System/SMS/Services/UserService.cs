@@ -3,6 +3,7 @@ using SMS.Data.Common;
 using SMS.Data.Models;
 using SMS.Models;
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,6 +16,16 @@ namespace SMS.Services
         public UserService(IRepository _repo)
         {
             repo = _repo;
+        }
+
+        public string Login(LoginViewModel model)
+        {
+            var user = repo.All<User>()
+                 .Where(u => u.Username == model.Username)
+                 .Where(u => u.Password == HashPassword(model.Password))
+                 .SingleOrDefault();
+
+            return user?.Id;
         }
 
         public (bool isValid, string error) Register(RegisterViewModel model)

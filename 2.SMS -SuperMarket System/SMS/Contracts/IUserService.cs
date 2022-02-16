@@ -7,5 +7,6 @@ namespace SMS.Contracts
 
         (bool isValid, string error) Register(RegisterViewModel model);
 
+        string Login(LoginViewModel model);
     }
 }

@@ -25,7 +25,27 @@ namespace SMS.Controllers
             return View(new { IsAuthenticated = false });
         }
 
+        [HttpPost]
+        public Response Login(LoginViewModel model)
+        {
+           string Id = userService.Login(model);
 
+            if (Id == null)
+            {
+                return View(new { ErrorMessage = "Incorrect Login" }, "/Error");
+            }
+
+            Request.Session.Clear();
+
+            SignIn(Id);
+
+            CookieCollection cookies = new CookieCollection();
+            cookies.Add(Session.SessionCookieName,
+                Request.Session.Id);
+
+            return Redirect("/");
+
+        }
 
         public Response Register()
         {
