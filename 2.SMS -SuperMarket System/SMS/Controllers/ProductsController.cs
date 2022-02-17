@@ -23,6 +23,7 @@ namespace SMS.Controllers
             return View(new { IsAuthenticated = true });
         }
 
+        [Authorize]
         [HttpPost]
         public Response Create(CreateViewModel model)
         {
