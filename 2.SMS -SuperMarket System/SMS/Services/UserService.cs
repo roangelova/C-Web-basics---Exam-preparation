@@ -18,6 +18,12 @@ namespace SMS.Services
             repo = _repo;
         }
 
+        public string GetUsername(string userId)
+        {
+            return repo.All<User>()
+                .FirstOrDefault(u => u.Id == userId)?.Username;
+        }
+
         public string Login(LoginViewModel model)
         {
             var user = repo.All<User>()
