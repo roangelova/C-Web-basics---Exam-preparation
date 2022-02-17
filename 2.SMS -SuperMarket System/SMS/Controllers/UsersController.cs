@@ -69,5 +69,13 @@ namespace SMS.Controllers
 
             return View(new  { ErrorMessage = error}, "/Error");
         }
+
+        [Authorize]
+        public Response Logout()
+        {
+            SignOut();
+
+            return Redirect("/");
+        }
     }
 }
