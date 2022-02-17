@@ -4,6 +4,7 @@ using SMS.Data.Models;
 using SMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -12,6 +13,8 @@ namespace SMS.Services
     public class ProductService : IProductService
     {
         private readonly IRepository repo;
+
+        decimal price = 0;
 
         public ProductService(IRepository _repo)
         {
@@ -32,7 +35,7 @@ namespace SMS.Services
 
             Product product = new Product()
             {
-                Price = model.Price,
+                Price = price,
                 Name = model.Name
 
             };
@@ -82,7 +85,10 @@ namespace SMS.Services
                 isValid = false;
                 error.AppendLine("Name must be between 4 and 20 characters");
             }
-            if (model.Price < 0.05m || model.Price > 1000m)
+
+
+            if (!decimal.TryParse(model.Price,NumberStyles.Float,CultureInfo.InvariantCulture, out price)
+                || price < 0.05m || price > 1000m)
             {
                 isValid = false;
                 error.AppendLine("Product price must be between 0.05 and 1000");

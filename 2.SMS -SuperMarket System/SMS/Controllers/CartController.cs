@@ -23,7 +23,7 @@ namespace SMS.Contracts
             {
             products = products, 
             IsAuthenticated = true
-            }, "/Details");
+            }, "Carts/Details");
         }
     }
 }
