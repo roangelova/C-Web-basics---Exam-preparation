@@ -25,5 +25,27 @@ namespace SMS.Contracts
             IsAuthenticated = true
             }, "Carts/Details");
         }
+
+        [Authorize]
+        public Response Buy()
+        {
+            cartService.BuyProducts(User.Id);
+
+            return Redirect("/");
+        }
+
+
+        [Authorize]
+        public Response Details() 
+        {
+         var products = cartService.GetProducts(User.Id);
+
+            return View(new
+            {
+                products = products,
+                IsAuthenticated = true
+            });
+        }
+
     }
 }
